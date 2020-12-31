@@ -12,7 +12,7 @@ from PIL import Image
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('checkpoint', action='store', default='checkpoint.pth')
+    parser.add_argument('--checkpoint', action='store', default='checkpoint.pth')
     parser.add_argument('--top_k', dest='top_k', default='3')
     parser.add_argument('--filepath', dest='filepath', default='flowers/test/1/image_06743.jpg') # use a deafault filepath to a primrose image 
     parser.add_argument('--category_names', dest='category_names', default='cat_to_name.json')
