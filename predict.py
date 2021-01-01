@@ -118,7 +118,7 @@ def load_cat_names(filename):
 def main(): 
    args = parse_args()
    gpu = args.gpu
-   model = load_checkpoint(args.checkpoint)
+   optimizer, model = load_checkpoint(args.checkpoint)
    cat_to_name = load_cat_names(args.category_names)
     
    img_path = args.filepath
