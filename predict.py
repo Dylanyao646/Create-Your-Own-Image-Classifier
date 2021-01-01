@@ -129,13 +129,13 @@ def main():
    print(probs)
   
 
-   plt.subplot(2, 1, 1)
-   plt.title(img_name)
-   plt.imshow(check_image)
+   #plt.subplot(2, 1, 1)
+   #plt.title(img_name)
+   #plt.imshow(check_image)
 
-   plt.subplot(2, 1, 2)
-   plt.barh(names, probs)
-   plt.xlabel('Probabilities')
+   #plt.subplot(2, 1, 2)
+   #plt.barh(names, probs)
+   #plt.xlabel('Probabilities')
 
 if __name__ == "__main__":
    main()
