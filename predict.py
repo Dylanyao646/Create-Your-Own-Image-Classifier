@@ -26,7 +26,6 @@ def process_image(image):
     '''
     
    # Process a PIL image for use in a PyTorch model
-    from PIL import Image
     im = Image.open(image)
     
     # resize the image
@@ -41,12 +40,14 @@ def process_image(image):
         im.thumbnail((256, 5000000)) #used the arbitrary 5000000, but any large value will work
         
     # crop out the center 224x224 portion of the image
-    left = (width - 224)/2
-    top = (height - 224)/2
-    right = (width + 224)/2
-    bottom = (height + 224)/2
-
-    im = im.crop((left, top, right, bottom))
+    left_margin = (im.width - 224)/2
+    bottom_margin = (im.height - 224)/2
+    right_margin = left_margin + 224
+    top_margin = bottom_margin + 224
+    
+    # 4 turples coordinates
+    im = im.crop((left_margin, bottom_margin, right_margin, top_margin))
+    
     
     # Get Numpy array image from a PIL image
     np_image = np.array(im)
@@ -54,7 +55,7 @@ def process_image(image):
     # Normalization
     np_image = np_image/255
     mean = np.array([0.485, 0.456, 0.406])
-    std = np.std([0.229, 0.224, 0.225])
+    std = np.array([0.229, 0.224, 0.225])
     nor_image = (np_image - mean) / std
     
     # PyTorch tensors assume the color channel is the first dimension
